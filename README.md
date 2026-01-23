@@ -130,6 +130,44 @@ Este enfoque permite obtener un código **más claro, seguro, escalable y fácil
 
 ---
 
+## Relación del proyecto con Bases de Datos
+
+Aunque el proyecto no utiliza un sistema gestor de bases de datos (DBMS) de forma directa, **sí aplica conceptos fundamentales de bases de datos**, especialmente en la etapa de **preparación y calidad de los datos**.
+
+### Preparación del dataset
+El archivo CSV procesado puede considerarse una **tabla de base de datos**, donde cada fila representa un registro y cada columna un atributo.  
+El proceso de limpieza garantiza que los datos cumplan condiciones necesarias para ser almacenados posteriormente en una base de datos relacional o NoSQL.
+
+### Integridad de los datos
+Durante la limpieza se aplican reglas de integridad similares a las utilizadas en bases de datos:
+- Eliminación de registros con valores nulos en campos clave.
+- Validación de dominios (por ejemplo, duración de películas entre 1 y 400 minutos).
+- Conversión de tipos de datos a formatos consistentes.
+
+### Normalización y consistencia
+La normalización de textos y la limpieza de columnas complejas permiten:
+- Reducir inconsistencias en los datos.
+- Evitar duplicidad lógica (por ejemplo, géneros escritos de distintas formas).
+- Facilitar procesos posteriores de normalización y diseño de esquemas.
+
+### Columnas complejas y modelado
+Columnas como `crew`, `cast` y `keywords` contienen información anidada similar a estructuras JSON.  
+Su limpieza prepara los datos para:
+- Separación en tablas independientes.
+- Relaciones uno a muchos.
+- Diseño de un modelo lógico más estructurado.
+
+### Uso del dataset limpio
+El archivo CSV limpio generado puede ser utilizado para:
+- Cargar datos en una base de datos relacional (MySQL, PostgreSQL).
+- Alimentar bases de datos NoSQL.
+- Ejecutar consultas SQL sin problemas de integridad o formato.
+
+En este sentido, el proyecto funciona como una **etapa previa esencial al diseño e implementación de una base de datos**, asegurando calidad, consistencia y confiabilidad de la información.
+
+
+---
+
 ## Resultado final
 
 Como resultado del proceso se obtiene un **dataset limpio, validado y consistente**, almacenado en un nuevo archivo CSV, listo para ser utilizado en análisis avanzados o procesos de modelado de datos.
